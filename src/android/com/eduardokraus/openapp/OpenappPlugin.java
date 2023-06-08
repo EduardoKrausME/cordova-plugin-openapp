@@ -123,7 +123,7 @@ public class OpenappPlugin extends CordovaPlugin {
         try {
             eventName = arguments.getString(0);
         } catch (JSONException e) {
-            Log.d("UniversalLinks", "Failed to get event name from the JS arguments", e);
+            Log.d("OpenApp", "Failed to get event name from the JS arguments", e);
         }
 
         return eventName;
@@ -188,7 +188,7 @@ public class OpenappPlugin extends CordovaPlugin {
         // try to find host in the hosts list from the config.xml
         ULHost host = findHostByUrl(launchUri);
         if (host == null) {
-            Log.d("UniversalLinks", "Host " + launchUri.getHost() + " is not supported");
+            Log.d("OpenApp", "Host " + launchUri.getHost() + " is not supported");
             return;
         }
 

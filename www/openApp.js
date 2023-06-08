@@ -1,8 +1,8 @@
 var exec = require ( 'cordova/exec' );
 
-var universalLinks = {
+var openApp = {
 
-    PLUGIN_NAME        : 'UniversalLinks',
+    PLUGIN_NAME        : 'OpenApp',
     DEFAULT_EVENT_NAME : 'didLaunchAppFromLink',
 
     NATIVE_METHOD_SUBSCRIBE   : 'subscribeForEvent',
@@ -22,14 +22,14 @@ var universalLinks = {
         }
 
         if ( !eventName ) {
-            eventName = universalLinks.DEFAULT_EVENT_NAME;
+            eventName = openApp.DEFAULT_EVENT_NAME;
         }
 
         var innerCallback = function ( msg ) {
             callback ( msg.data );
         };
 
-        exec ( innerCallback, null, universalLinks.PLUGIN_NAME, universalLinks.NATIVE_METHOD_SUBSCRIBE, [ eventName ] );
+        exec ( innerCallback, null, openApp.PLUGIN_NAME, openApp.NATIVE_METHOD_SUBSCRIBE, [ eventName ] );
     },
 
     /**
@@ -39,11 +39,11 @@ var universalLinks = {
      */
     unsubscribe : function ( eventName ) {
         if ( !eventName ) {
-            eventName = universalLinks.DEFAULT_EVENT_NAME;
+            eventName = openApp.DEFAULT_EVENT_NAME;
         }
 
-        exec ( null, null, universalLinks.PLUGIN_NAME, universalLinks.NATIVE_METHOD_UNSUBSCRIBE, [ eventName ] );
+        exec ( null, null, openApp.PLUGIN_NAME, openApp.NATIVE_METHOD_UNSUBSCRIBE, [ eventName ] );
     }
 };
 
-module.exports = universalLinks;
+module.exports = openApp;

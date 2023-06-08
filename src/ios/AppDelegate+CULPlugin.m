@@ -10,7 +10,7 @@
 /**
  *  Plugin name in config.xml
  */
-static NSString *const PLUGIN_NAME = @"UniversalLinks";
+static NSString *const PLUGIN_NAME = @"OpenApp";
 
 @implementation AppDelegate (OPENAPPPlugin)
 

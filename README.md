@@ -89,7 +89,7 @@ var app = {
 
   // deviceready Event Handler
   onDeviceReady: function() {
-    universalLinks.subscribe('eventName', app.didLaunchAppFromLink);
+    openApp.subscribe('eventName', app.didLaunchAppFromLink);
   },
 
   didLaunchAppFromLink: function(eventData) {
@@ -100,11 +100,11 @@ var app = {
 app.initialize();
 ```
 
-As you can see, now you subscribe to event via `universalLinks` module when `deviceready` is fired. Actually, you can subscribe to it in any place of your application: plugin stores the event internally and dispatches it when there is a subscriber for it.
+As you can see, now you subscribe to event via `openApp` module when `deviceready` is fired. Actually, you can subscribe to it in any place of your application: plugin stores the event internally and dispatches it when there is a subscriber for it.
 
 Also, in v1.0.x `ul_didLaunchAppFromLink` was used as a default event name. From v1.1.0 you can just do like that:
 ```js
-universalLinks.subscribe(null, callbackFunction);
+openApp.subscribe(null, callbackFunction);
 ```
 If you didn't specify event name for the `path` or `host` - in the JS code just pass `null` as event name. But just for readability you might want to specify it `config.xml`.
 
@@ -308,9 +308,9 @@ To force Android opening always the same app instance, a known workaround is to 
 
 ### Application launch handling
 
-As mentioned - it is not enough just to redirect a user into your app, you will also need to display the correct content. In order to solve that - plugin provides JavaScript module: `universalLinks`. To get notified on application launch do the following:
+As mentioned - it is not enough just to redirect a user into your app, you will also need to display the correct content. In order to solve that - plugin provides JavaScript module: `openApp`. To get notified on application launch do the following:
 ```js
-universalLinks.subscribe('eventName', function (eventData) {
+openApp.subscribe('eventName', function (eventData) {
   // do some work
   console.log('Did launch application from the link: ' + eventData.url);
 });
@@ -318,7 +318,7 @@ universalLinks.subscribe('eventName', function (eventData) {
 
 If you didn't specify event name for path and host in `config.xml` - just pass `null` as a first parameter:
 ```js
-universalLinks.subscribe(null, function (eventData) {
+openApp.subscribe(null, function (eventData) {
   // do some work
   console.log('Did launch application from the link: ' + eventData.url);
 });
@@ -348,7 +348,7 @@ universalLinks.subscribe(null, function (eventData) {
 
 If you want - you can also unsubscribe from the events later on:
 ```js
-universalLinks.unsubscribe('eventName');
+openApp.unsubscribe('eventName');
 ```
 
 Now it's time for some examples. In here we are gonna use Android, because it is easier to test (see [testing for Android](#testing-ul-for-android-locally) section). JavaScript side is platform independent, so all the example code below will also work for iOS.
@@ -398,8 +398,8 @@ Now it's time for some examples. In here we are gonna use Android, because it is
     // deviceready Event Handler
     onDeviceReady: function() {
       console.log('Device is ready for work');
-      universalLinks.subscribe('openNewsListPage', app.onNewsListPageRequested);
-      universalLinks.subscribe('openNewsDetailedPage', app.onNewsDetailedPageRequested);
+      openApp.subscribe('openNewsListPage', app.onNewsListPageRequested);
+      openApp.subscribe('openNewsDetailedPage', app.onNewsDetailedPageRequested);
     },
 
     // openNewsListPage Event Handler
@@ -487,9 +487,9 @@ Now, let's say, you want your app to handle all links from `myhost.com`, but you
     // deviceready Event Handler
     onDeviceReady: function() {
       console.log('Handle deviceready event if you need');
-      universalLinks.subscribe('openNewsListPage', app.onNewsListPageRequested);
-      universalLinks.subscribe('openNewsDetailedPage', app.onNewsDetailedPageRequested);
-      universalLinks.subscribe('launchedAppFromLink', app.onApplicationDidLaunchFromLink);
+      openApp.subscribe('openNewsListPage', app.onNewsListPageRequested);
+      openApp.subscribe('openNewsDetailedPage', app.onNewsDetailedPageRequested);
+      openApp.subscribe('launchedAppFromLink', app.onApplicationDidLaunchFromLink);
     },
 
     // openNewsListPage Event Handler

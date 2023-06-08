@@ -68,7 +68,7 @@ function removeIntentFiltersFromActivity ( activity ) {
     }
 
     oldIntentFilters.forEach ( function ( intentFilter ) {
-        if ( !isIntentFilterForUniversalLinks ( intentFilter ) ) {
+        if ( !isIntentFilterForOpenApp ( intentFilter ) ) {
             newIntentFilters.push ( intentFilter );
         }
     } );
@@ -82,14 +82,14 @@ function removeIntentFiltersFromActivity ( activity ) {
  * @param {Object} intentFilter - intent-filter to check
  * @return {Boolean} true - if intent-filter for Universal Links; otherwise - false;
  */
-function isIntentFilterForUniversalLinks ( intentFilter ) {
+function isIntentFilterForOpenApp ( intentFilter ) {
     var actions    = intentFilter[ 'action' ];
     var categories = intentFilter[ 'category' ];
     var data       = intentFilter[ 'data' ];
 
-    return isActionForUniversalLinks ( actions ) &&
-        isCategoriesForUniversalLinks ( categories ) &&
-        isDataTagForUniversalLinks ( data );
+    return isActionForOpenApp ( actions ) &&
+        isCategoriesForOpenApp ( categories ) &&
+        isDataTagForOpenApp ( data );
 }
 
 /**
@@ -98,7 +98,7 @@ function isIntentFilterForUniversalLinks ( intentFilter ) {
  * @param {Array} actions - list of actions in the intent-filter
  * @return {Boolean} true - if action for Universal Links; otherwise - false
  */
-function isActionForUniversalLinks ( actions ) {
+function isActionForOpenApp ( actions ) {
     // there can be only 1 action
     if ( actions == null || actions.length != 1 ) {
         return false;
@@ -115,7 +115,7 @@ function isActionForUniversalLinks ( actions ) {
  * @param {Array} categories - list of categories in the intent-filter
  * @return {Boolean} true - if action for Universal Links; otherwise - false
  */
-function isCategoriesForUniversalLinks ( categories ) {
+function isCategoriesForOpenApp ( categories ) {
     // there can be only 2 categories
     if ( categories == null || categories.length != 2 ) {
         return false;
@@ -145,7 +145,7 @@ function isCategoriesForUniversalLinks ( categories ) {
  * @param {Array} data - list of data tags in the intent-filter
  * @return {Boolean} true - if data tag for Universal Links; otherwise - false
  */
-function isDataTagForUniversalLinks ( data ) {
+function isDataTagForOpenApp ( data ) {
     // can have only 1 data tag in the intent-filter
     if ( data == null || data.length != 1 ) {
         return false;

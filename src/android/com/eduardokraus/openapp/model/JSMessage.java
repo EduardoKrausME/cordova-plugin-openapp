@@ -96,7 +96,7 @@ public class JSMessage extends JSONObject {
         try {
             put(JSGeneralKeys.EVENT, eventName);
         } catch (JSONException e) {
-            Log.d("UniversalLinks", "Failed to set event name", e);
+            Log.d("OpenApp", "Failed to set event name", e);
         }
     }
 
@@ -141,7 +141,7 @@ public class JSMessage extends JSONObject {
 
             put(JSGeneralKeys.DATA, dataObject);
         } catch (JSONException e) {
-            Log.d("UniversalLinks", "Failed to set event data", e);
+            Log.d("OpenApp", "Failed to set event data", e);
         }
     }
 

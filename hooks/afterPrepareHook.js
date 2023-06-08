@@ -39,11 +39,11 @@ function run ( cordovaContext ) {
     platformsList.forEach ( function ( platform ) {
         switch ( platform ) {
             case ANDROID: {
-                activateUniversalLinksInAndroid ( cordovaContext, pluginPreferences );
+                activateOpenAppInAndroid ( cordovaContext, pluginPreferences );
                 break;
             }
             case IOS: {
-                activateUniversalLinksInIos ( cordovaContext, pluginPreferences );
+                activateOpenAppInIos ( cordovaContext, pluginPreferences );
                 break;
             }
         }
@@ -57,7 +57,7 @@ function run ( cordovaContext ) {
  * @param {Object} pluginPreferences - plugin preferences from the config.xml file. Basically, content from
  *     <openapp> tag.
  */
-function activateUniversalLinksInAndroid ( cordovaContext, pluginPreferences ) {
+function activateOpenAppInAndroid ( cordovaContext, pluginPreferences ) {
     // inject preferenes into AndroidManifest.xml
     androidManifestWriter.writePreferences ( cordovaContext, pluginPreferences );
 }
@@ -69,7 +69,7 @@ function activateUniversalLinksInAndroid ( cordovaContext, pluginPreferences ) {
  * @param {Object} pluginPreferences - plugin preferences from the config.xml file. Basically, content from
  *     <openapp> tag.
  */
-function activateUniversalLinksInIos ( cordovaContext, pluginPreferences ) {
+function activateOpenAppInIos ( cordovaContext, pluginPreferences ) {
     // modify xcode project preferences
     iosProjectPreferences.enableAssociativeDomainsCapability ( cordovaContext );
 

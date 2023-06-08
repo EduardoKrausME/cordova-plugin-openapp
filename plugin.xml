@@ -19,8 +19,8 @@
     </engines>
 
     <!-- JavaScrip Library Sources -->
-    <js-module name="universalLinks" src="www/universal_links.js">
-        <clobbers target="universalLinks" />
+    <js-module name="openApp" src="www/openApp.js">
+        <clobbers target="openApp" />
     </js-module>
 
     <!-- Hooks -->
@@ -32,7 +32,7 @@
 
         <!-- Plugin inclusion in Cordova config.xml    -->
         <config-file parent="/*" target="config.xml">
-            <feature name="UniversalLinks">
+            <feature name="OpenApp">
                 <param name="ios-package" value="CULPlugin" />
                 <param name="onload" value="true" />
             </feature>
@@ -79,7 +79,7 @@
     <platform name="android">
         <!-- Plugin inclusion in Cordova config.xml -->
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="UniversalLinks">
+            <feature name="OpenApp">
                 <param name="android-package" value="com.eduardokraus.openapp.OpenappPlugin" />
                 <param name="onload" value="true" />
             </feature>
